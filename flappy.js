@@ -2,8 +2,8 @@
  * Created by mattpowell on 6/13/16.
  */
 
-var fish;
-var coral;
+var megaman;
+var ground;
 var currentState;
 var width;
 var height;
@@ -20,10 +20,10 @@ function main() {
 
     currentState = states.Splash; //Game begins at the splash screen.
 
-    document.body.appendChild(canvas); //append the canvas we've created tot he body element in our html doc.
+    document.body.appendChild(canvas); //append the canvas we've created to the body element in our html doc.
 
-    fish = new Fish();
-    //coral = new CoralCollection();
+    megaman = new Megaman();
+    //ground = new Ground();
 
     loadGraphics();
 }
@@ -56,11 +56,11 @@ function onpress(evt) {
 
         case states.Splash: // Start the game and update the fish velocity.
             currentState = states.Game;
-            fish.jump();
+            megaman.jump();
             break;
 
         case states.Game: // The game is in progress. Update fish velocity.
-            fish.jump();
+            megaman.jump();
             break;
 
         case states.Score: // Change from score to splash state if event within okButton bounding box
@@ -77,7 +77,7 @@ function onpress(evt) {
                 okButton.y < mouseY && mouseY < okButton.y + okButton.height
             ) {
                 //console.log('click');
-                corals.reset();
+                ground.reset();
                 currentState = states.Splash;
                 score = 0;
             }
@@ -85,7 +85,7 @@ function onpress(evt) {
     }
 }
 
-function Fish() {
+function Megaman() {
     this.x = 140;
     this.y = 0;
 
@@ -97,14 +97,14 @@ function Fish() {
 function loadGraphics() {
     //initiates graphics and ok button
     var img = new Image();
-    img.src = "sheet.png";
+    img.src = "mmsheet2.png";
     img.onload = function () {
         initiateSprites(this);
         renderingContext.fillStyle = backgroundSprite.color;
         renderingContext.fillRect(0, 0, width, height);
         backgroundSprite.draw(renderingContext, 0, height - backgroundSprite.height);
         backgroundSprite.draw(renderingContext, backgroundSprite.width, height - backgroundSprite.height); //sets background color
-        fishSprite[0].draw(renderingContext, 5, 5, 142, 50);
+        megamanSprite[0].draw(renderingContext, 5, 5, 142, 50);
 
         /* Turned off temporarily
             okButton = {
