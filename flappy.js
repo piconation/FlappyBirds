@@ -85,13 +85,69 @@ function onpress(evt) {
     }
 }
 
+//creates instance of megaman
+
 function Megaman() {
     this.x = 140;
     this.y = 0;
 
+    this.frame = 0;
+    this.velocity = 0;
+    this.animation = [0, 1, 2, 1];  //animation sequence
+
+    this.rotation = 0;
+    this.radius = 12;
+
+    this.gravity = 0.25;
+    this._jump = 4.6;
+
+    //makes megaman jump
+
+    this.jump = function () {
+        this.velocity = -this.jump;
+    };
+
+    //update megaman animation and position of megaman
+
+    this.update = function () {
+        //plays animation twice as fast during the actual game
+        var n = currentState === states.Splash ? 10 : 5;
+
+        this.frame += frames % n === 0 ? 1: 0;
+        this.frame %= this.animation.length;
+
+        if (currentState === states.Splash) {
+            this.updateIdleMegaman();
+        } else { //game state
+            this.updatePlayingMegaman();
+        }
+    };
+
+    //runs megaman through it's idle animation
+
+    this.updateIdleMegaman = function () {
+        this.y = height - 280 + 5 * Math.cos(frames / 10);
+        this.rotation = 0;
+    };
+
+    // draws Megaman to canvas with renderingContext, which is the context used for drawing
+
     this.draw = function (renderingContext) {
-        
-    }
+        renderingContext.save();
+
+        // translate and rotate renderingContext coordinate system
+
+        renderingContext.translate(this.x, this.y);
+        renderingContext.rotate(this.rotation);
+
+        var n = this.animation(this.frame);
+
+        // draws the fish with center in origin
+
+        megamanSprite[n].draw(renderingContext, -megamanSprite[n].width / 2, -megamanSprite[n].height / 2);
+
+        renderingContext.restore();
+    };
 }
 
 function loadGraphics() {
@@ -112,13 +168,32 @@ function loadGraphics() {
             y: height - 200,
             width: okButtonSprite.width,
             height: okButtonSprite.height
-        };
+        };*/
 
-        gameLoop();*/
-    }
+        gameLoop();
+    };
 }
 
+// this updates and renders all sprites before the window repaints
 
+function gameLoop() {
+    update();
+    render();
+    window.requestAnimationFrame(gameLoop); // this is the work horse that keeps calling gameLoop. It's a callback.
+    //concole.log('swim');
+}
+
+function render() {
+    // draws background color and items
+    // renderingContext.fillRect(0, 0, width, height);
+
+    // draws background sprites
+    backgroundSprite.draw(renderingContext, 0, height - backgroundSprite.height);
+    backgroundSprite.draw(renderingContext, backgroundSprite.width, height - backgroundSprite.height);
+
+    // corals.draw(renderingContext);
+    megaman.draw(renderingContext);
+}
 
 
 
