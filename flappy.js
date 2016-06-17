@@ -45,7 +45,7 @@ function windowSetup() {
 
 function canvasSetup() {
     canvas = document.createElement("canvas");
-    canvas.style.border = "15px solid #blue";
+    canvas.style.border = "15px solid #5bb58f";
     canvas.width = width;
     canvas.height = height;
     renderingContext = canvas.getContext("2d");
@@ -142,7 +142,7 @@ function Megaman() {
 
         var n = this.animation(this.frame);
 
-        // draws the fish with center in origin
+        // draws megaman with center in origin
 
         megamanSprite[n].draw(renderingContext, -megamanSprite[n].width / 2, -megamanSprite[n].height / 2);
 
@@ -194,6 +194,14 @@ function render() {
     // corals.draw(renderingContext);
     megaman.draw(renderingContext);
 }
+
+
+
+
+
+
+
+
 
 
 
