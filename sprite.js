@@ -19,10 +19,11 @@ Sprite.prototype.draw = function (renderingContext, x, y) {
 
 function initiateSprites(img) {
     megamanSprite = [
-        //new Sprite(img, 175, 30, 18, 20),
-        //new Sprite(img, 175, 55, 18, 20),
-        new Sprite(img, 175, 83, 18, 20)
+        new Sprite(img, 176, 33, 16, 13),
+        new Sprite(img, 176, 58, 12, 10),
+        new Sprite(img, 176, 83, 14, 10)
     ];
     
-    backgroundSprite = new Sprite(img, 0, 0, 138, 114);
+    backgroundSprite = new Sprite(img, 0, 0, 338, 0);
+    backgroundSprite.color = "#692121"; //sets background color
 }
