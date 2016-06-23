@@ -2,8 +2,17 @@
  * Created by mattpowell on 6/14/16.
  */
 
-var megamanSprite;
-var backgroundSprite;
+var megamanSprite,
+    backgroundSprite,
+    foregroundSprite,
+    topCoralSprite,
+    bottomCoralSprite,
+    textSprites,
+    scoreSprite,
+    splashScreenSprite,
+    okButtonSprite,
+    smallNumberSprite,
+    largeNumberSprite;
 
 function Sprite(img, x, y, width, height) {
     this.img = img;
@@ -24,6 +33,13 @@ function initiateSprites(img) {
         new Sprite(img, 176, 83, 14, 10)
     ];
     
-    backgroundSprite = new Sprite(img, 0, 0, 338, 0);
+    /*backgroundSprite = new Sprite(img, 0, 0, 338, 0);
     backgroundSprite.color = "#692121"; //sets background color
+    //foregroundSprite = new*/
+}
+
+function initiateBackground(img2) {
+
+    backgroundSprite = new backgroundSprite(img2, 0, 0, 338, 0);
+    backgroundSprite.color = "#692121";
 }
