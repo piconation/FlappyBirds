@@ -29,7 +29,7 @@ var
     };
 
 
-function groundCollection() {
+function GroundCollection() {
     this._ground = [];
 
     /**
@@ -296,30 +296,22 @@ function canvasSetup() {
 function loadGraphics() {
     // Initiate sprite graphics and ok button
     var img = new Image();
-    img.src = "mmsheet2.png";
+    img.src = "mmsprite.png";
     img.onload = function () {
         initiateSprites(this);
-        renderingContext.fillStyle = backgroundSprite.color;
+        renderingContext.fillStyle = ground;
 
-        okButton = {
+        
+
+        /*okButton = {
             x: (width - okButtonSprite.width) / 2,
             y: height - 200,
             width: okButtonSprite.width,
             height: okButtonSprite.height
-        };
+        };*/
 
         gameLoop();
     };
-}
-
-function loadGraphics2() {
-    // Initiate  background graphics
-    var img2 = new Image2();
-    img.src = "mmbackground.png";
-    img.onload = function () {
-        initiateSprites(this);
-        renderingContext.fillStyle = backgroundSprite.color;
-    }
 }
 
 /**
@@ -334,10 +326,9 @@ function main() {
     document.body.appendChild(canvas); // Append the canvas we've created to the body element in our HTML document.
 
     megaman = new Megaman();
-    ground = new groundCollection();
+    ground = new GroundCollection();
 
     loadGraphics();
-    loadGraphics2();
 }
 
 /**
@@ -373,7 +364,7 @@ function update() {
  */
 function render() {
     // Draw background color
-    renderingContext.fillRect(0, 0, width, height);
+    //renderingContext.fillRect(0, 0, width, height);
 
     // Draw background sprites
     backgroundSprite.draw(renderingContext, 0, height - backgroundSprite.height);
@@ -387,33 +378,9 @@ function render() {
     }
 
     // Draw foreground sprites
-    foregroundSprite.draw(renderingContext, foregroundPosition, height - foregroundSprite.height);
-    foregroundSprite.draw(renderingContext, foregroundPosition + foregroundSprite.width, height - foregroundSprite.height);
+    //foregroundSprite.draw(renderingContext, foregroundPosition, height - foregroundSprite.height);
+    //foregroundSprite.draw(renderingContext, foregroundPosition + foregroundSprite.width, height - foregroundSprite.height);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
