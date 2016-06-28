@@ -16,7 +16,7 @@ var
 
 // The playable fish character
     megaman,
-    ground,
+    fire,
 
 // State vars
     currentState,
@@ -29,21 +29,21 @@ var
     };
 
 
-function GroundCollection() {
-    this._ground = [];
+function FireCollection() {
+    this._fire = [];
 
     /**
      * Empty corals array
      */
     this.reset = function () {
-        this._ground = [];
+        this._fire = [];
     };
 
     /**
      * Creates and adds a new Coral to the game.
      */
     this.add = function () {
-        this._ground.push(new Ground()); // Create and push coral to array
+        this._fire.push(new Fire()); // Create and push coral to array
     };
 
     /**
@@ -54,16 +54,16 @@ function GroundCollection() {
             this.add();
         }
 
-        for (var i = 0, len = this._ground.length; i < len; i++) { // Iterate through the array of corals and update each.
-            var ground = this._ground[i]; // The current coral.
+        for (var i = 0, len = this._fire.length; i < len; i++) { // Iterate through the array of corals and update each.
+            var fire = this._fire[i]; // The current coral.
 
             if (i === 0) { // If this is the leftmost coral, it is the only coral that the fish can collide with . . .
-                ground.detectCollision(); // . . . so, determine if the fish has collided with this leftmost coral.
+                fire.detectCollision(); // . . . so, determine if the fish has collided with this leftmost coral.
             }
 
-            ground.x -= 2; // Each frame, move each coral two pixels to the left. Higher/lower values change the movement speed.
-            if (ground.x < -ground.width) { // If the coral has moved off screen . . .
-                this._ground.splice(i, 1); // . . . remove it.
+            fire.x -= 2; // Each frame, move each coral two pixels to the left. Higher/lower values change the movement speed.
+            if (fire.x < -fire.width) { // If the coral has moved off screen . . .
+                this._fire.splice(i, 1); // . . . remove it.
                 i--;
                 len--;
             }
@@ -74,9 +74,9 @@ function GroundCollection() {
      * Draw all corals to canvas context.
      */
     this.draw = function () {
-        for (var i = 0, len = this._ground.length; i < len; i++) {
-            var ground = this._ground[i];
-            ground.draw();
+        for (var i = 0, len = this._fire.length; i < len; i++) {
+            var fire = this._fire[i];
+            fire.draw();
         }
     };
 }
@@ -84,7 +84,7 @@ function GroundCollection() {
 /**
  * The Coral class. Creates instances of Coral.
  */
-function Ground() {
+function Fire() {
     this.x = 500;
     this.y = height - (bottomCoralSprite.height + foregroundSprite.height + 120 + 200 * Math.random());
     this.width = bottomCoralSprite.width;
@@ -252,7 +252,7 @@ function onpress(evt) {
                 okButton.y < mouseY && mouseY < okButton.y + okButton.height
             ) {
                 //console.log('click');
-                ground.reset();
+                fire.reset();
                 currentState = states.Splash;
                 score = 0;
             }
@@ -271,8 +271,8 @@ function windowSetup() {
     // Set the width and height if we are on a display with a width > 500px (e.g., a desktop or tablet environment).
     var inputEvent = "touchstart";
     if (width >= 500) {
-        width = 380;
-        height = 430;
+        width = 500;
+        height = 500;
         inputEvent = "mousedown";
     }
 
@@ -299,10 +299,8 @@ function loadGraphics() {
     img.src = "mmsprite.png";
     img.onload = function () {
         initiateSprites(this);
-        renderingContext.fillStyle = ground;
-
+        renderingContext.fillStyle = fire;
         
-
         /*okButton = {
             x: (width - okButtonSprite.width) / 2,
             y: height - 200,
@@ -326,7 +324,7 @@ function main() {
     document.body.appendChild(canvas); // Append the canvas we've created to the body element in our HTML document.
 
     megaman = new Megaman();
-    ground = new GroundCollection();
+    fire = new FireCollection();
 
     loadGraphics();
 }
@@ -352,7 +350,7 @@ function update() {
     }
 
     if (currentState === states.Game) {
-        ground.update();
+        fire.update();
     }
 
     megaman.update();
@@ -370,7 +368,7 @@ function render() {
     backgroundSprite.draw(renderingContext, 0, height - backgroundSprite.height);
     backgroundSprite.draw(renderingContext, backgroundSprite.width, height - backgroundSprite.height);
 
-    ground.draw(renderingContext);
+    fire.draw(renderingContext);
     megaman.draw(renderingContext);
 
     if (currentState === states.Score) {

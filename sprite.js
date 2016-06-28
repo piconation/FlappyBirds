@@ -27,17 +27,20 @@ Sprite.prototype.draw = function (renderingContext, x, y) {
 };
 
 function initiateSprites(img) {
-    megamanSprite = [
-        new Sprite(img, 351, 750, 32, 21),
-        new Sprite(img, 351, 800, 26, 21),
-        new Sprite(img, 351, 850, 31, 21)
-    ];
 
-    backgroundSprite = new Sprite(img, 0, 0, 943, 600);
-    backgroundSprite.color = "#692121";
+    backgroundSprite = new Sprite(img, 0, 0, 472, 342);
 
     foregroundSprite = new Sprite(img, 0, 650, 943, 84);
-    //foregroundSprite.color = "#692121";
+
+    megamanSprite = [
+        new Sprite(img, -176, -375, 16, 11),
+        new Sprite(img, -176, -400, 13, 11),
+        new Sprite(img, -176, -425, 16, 11)
+    ];
+    
+    topCoralSprite = new Sprite(img, 621, 845, 16, 32);
+
+    bottomCoralSprite = new Sprite(img, 621, 845, 16, 32);
 
 }
 
