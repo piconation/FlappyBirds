@@ -28,19 +28,33 @@ Sprite.prototype.draw = function (renderingContext, x, y) {
 
 function initiateSprites(img) {
 
-    backgroundSprite = new Sprite(img, 0, 0, 472, 342);
+    backgroundSprite = new Sprite(img, 0, 0, 472, 305);
 
-    foregroundSprite = new Sprite(img, 0, 650, 943, 84);
+    foregroundSprite = new Sprite(img, 0, 356, 472, 38);
 
     megamanSprite = [
-        new Sprite(img, -176, -375, 16, 11),
-        new Sprite(img, -176, -400, 13, 11),
-        new Sprite(img, -176, -425, 16, 11)
+        new Sprite(img, 822, 15, 26, 23),
+        new Sprite(img, 822, 115, 28, 23),
+        new Sprite(img, 822, 15, 26, 23)
     ];
     
-    topCoralSprite = new Sprite(img, 621, 845, 16, 32);
+    topCoralSprite = new Sprite(img, 164, 485, 52, 50);
+    bottomCoralSprite = new Sprite(img, 164, 485, 52, 50);
 
-    bottomCoralSprite = new Sprite(img, 621, 845, 16, 32);
+    textSprites = {
+        floppyFish: new Sprite(img, 59, 114, 96, 22),
+        gameOver: new Sprite(img, 59, 136, 94, 19),
+        getReady: new Sprite(img, 59, 155, 87, 22)
+    };
+
+    topCoralSprite = new Sprite(img, 164, 485, 52, 50);
+    bottomCoralSprite = new Sprite(img, 164, 485, 52, 50);
+
+
+    okButtonSprite = new Sprite(img, 119, 191, 40, 14);
+
+    scoreSprite = new Sprite(img, 138, 56, 113, 58);
+    splashScreenSprite = new Sprite(img, 0, 114, 59, 49);
 
 }
 

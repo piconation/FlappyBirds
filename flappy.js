@@ -296,17 +296,17 @@ function canvasSetup() {
 function loadGraphics() {
     // Initiate sprite graphics and ok button
     var img = new Image();
-    img.src = "mmsprite.png";
+    img.src = "mmsprite2.png";
     img.onload = function () {
         initiateSprites(this);
         renderingContext.fillStyle = fire;
         
-        /*okButton = {
+        okButton = {
             x: (width - okButtonSprite.width) / 2,
             y: height - 200,
             width: okButtonSprite.width,
             height: okButtonSprite.height
-        };*/
+        };
 
         gameLoop();
     };
