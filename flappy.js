@@ -166,7 +166,7 @@ function Megaman() {
      * Runs the fish through its idle animation.
      */
     this.updateIdleMegaman = function () {
-        this.y = height - 280 + 5 * Math.cos(frames / 10);
+        this.y = height - 250 + 5 * Math.cos(frames / 10);
         this.rotation = 0;
     };
 
@@ -270,9 +270,9 @@ function windowSetup() {
 
     // Set the width and height if we are on a display with a width > 500px (e.g., a desktop or tablet environment).
     var inputEvent = "touchstart";
-    if (width >= 650) {
-        width = 600;
-        height = 500;
+    if (width >= 500) {
+        width = 500;
+        height = 400;
         inputEvent = "mousedown";
     }
 
@@ -346,7 +346,7 @@ function update() {
     frames++;
 
     if (currentState !== states.Score) {
-        foregroundPosition = (foregroundPosition - 2) % 14; // Move left two px each frame. Wrap every 14px.
+        foregroundPosition = (foregroundPosition - 1.8) % 175; // Move left two px each frame. Wrap every 14px.
     }
 
     if (currentState === states.Game) {
@@ -368,6 +368,10 @@ function render() {
     backgroundSprite.draw(renderingContext, 0, height - backgroundSprite.height);
     backgroundSprite.draw(renderingContext, backgroundSprite.width, height - backgroundSprite.height);
 
+    // Draw foreground sprites
+    foregroundSprite.draw(renderingContext, foregroundPosition, height - foregroundSprite.height);
+    foregroundSprite.draw(renderingContext, foregroundPosition + foregroundSprite.width, height - foregroundSprite.height);
+
     fire.draw(renderingContext);
     megaman.draw(renderingContext);
 
@@ -375,10 +379,32 @@ function render() {
         okButtonSprite.draw(renderingContext, okButton.x, okButton.y);
     }
 
-    // Draw foreground sprites
-    //foregroundSprite.draw(renderingContext, foregroundPosition, height - foregroundSprite.height);
-    //foregroundSprite.draw(renderingContext, foregroundPosition + foregroundSprite.width, height - foregroundSprite.height);
+
 }
+
+function score() {
+    var localScore = localStorage.getItem('score');
+    score = localScore;
+    document.getElementById('score').innerHTML = score;
+    score = 0
+}
+
+
+function highscore() {
+    var localHighScore = localStorage.getItem('highscore');
+    highscore = localHighScore;
+    document.getElementById('highscore').innerHTML = highscore;
+    highscore = 0
+}
+
+
+
+
+
+
+
+
+
 
 
 
