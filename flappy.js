@@ -270,8 +270,8 @@ function windowSetup() {
 
     // Set the width and height if we are on a display with a width > 500px (e.g., a desktop or tablet environment).
     var inputEvent = "touchstart";
-    if (width >= 500) {
-        width = 500;
+    if (width >= 650) {
+        width = 600;
         height = 500;
         inputEvent = "mousedown";
     }
@@ -296,7 +296,7 @@ function canvasSetup() {
 function loadGraphics() {
     // Initiate sprite graphics and ok button
     var img = new Image();
-    img.src = "mmsprite2.png";
+    img.src = "mmsprite6.png";
     img.onload = function () {
         initiateSprites(this);
         renderingContext.fillStyle = fire;

@@ -28,18 +28,18 @@ Sprite.prototype.draw = function (renderingContext, x, y) {
 
 function initiateSprites(img) {
 
-    backgroundSprite = new Sprite(img, 0, 0, 472, 305);
+    backgroundSprite = new Sprite(img, 0, 71, 236, 203);
 
-    foregroundSprite = new Sprite(img, 0, 356, 472, 38);
+    foregroundSprite = new Sprite(img, 0, 0, 236, 19);
 
     megamanSprite = [
-        new Sprite(img, 822, 15, 26, 23),
-        new Sprite(img, 822, 115, 28, 23),
-        new Sprite(img, 822, 15, 26, 23)
+        new Sprite(img, 0, 20, 26, 23),
+        new Sprite(img, 27, 20, 28, 23),
+        new Sprite(img, 27, 20, 28, 23)
     ];
     
-    topCoralSprite = new Sprite(img, 164, 485, 52, 50);
-    bottomCoralSprite = new Sprite(img, 164, 485, 52, 50);
+    topCoralSprite = new Sprite(img, 56, 20, 52, 50);
+    bottomCoralSprite = new Sprite(img, 56, 20, 52, 50);
 
     textSprites = {
         floppyFish: new Sprite(img, 59, 114, 96, 22),
@@ -47,8 +47,8 @@ function initiateSprites(img) {
         getReady: new Sprite(img, 59, 155, 87, 22)
     };
 
-    topCoralSprite = new Sprite(img, 164, 485, 52, 50);
-    bottomCoralSprite = new Sprite(img, 164, 485, 52, 50);
+    topCoralSprite = new Sprite(img, 56, 20, 52, 50);
+    bottomCoralSprite = new Sprite(img, 56, 20, 52, 50);
 
 
     okButtonSprite = new Sprite(img, 119, 191, 40, 14);
