@@ -5,6 +5,7 @@
     <title>Mega Man vs. Metal Man</title>
     <script src="flappy.js"></script>
     <script src="sprite.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <style>
         body{
             width: 100%;
@@ -37,7 +38,12 @@
         #backgroundwaves{ width: 813px; height: 468px; background-image:url(images/gameScene.png); position: relative; left: -49%; top: 250px;}*/
     </style>
 </head>
-<body onload="main()">
-
+<body onload="highScore(); main()">
+    <img src="yourscore.png">
+    <div id="score" style="background-color: black; color: lightgray; font-weight: bolder; font-family: 'Rockwell', monospace, sans-serif; width: 116px; font-size: 20px; text-align: center;">
+    </div><br>
+    <img src="highscore.png">
+    <div id="highscore" style="background-color: black; color: lightgray; font-weight: bolder; font-family: 'Rockwell', monospace, sans-serif; width: 118px; font-size: 20px; text-align: center;">
+    </div>
 </body>
 </html>

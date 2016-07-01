@@ -8,6 +8,8 @@ var
     renderingContext,
     width,
     height,
+    score = 0,
+    highscore = 0,
 
     okButton,
 
@@ -59,6 +61,7 @@ function FireCollection() {
 
             if (i === 0) { // If this is the leftmost coral, it is the only coral that the fish can collide with . . .
                 fire.detectCollision(); // . . . so, determine if the fish has collided with this leftmost coral.
+                fire.score();
             }
 
             fire.x -= 2; // Each frame, move each coral two pixels to the left. Higher/lower values change the movement speed.
@@ -86,9 +89,10 @@ function FireCollection() {
  */
 function Fire() {
     this.x = 500;
-    this.y = height - (bottomCoralSprite.height + foregroundSprite.height + 120 + 200 * Math.random());
+    this.y = height - (bottomCoralSprite.height + foregroundSprite.height + 200 + 140 * Math.random());
     this.width = bottomCoralSprite.width;
     this.height = bottomCoralSprite.height;
+    this.scored = false;
 
     /**
      * Determines if the fish has collided with the Coral.
@@ -110,6 +114,13 @@ function Fire() {
         // Determine intersection
         if (r > d1 || r > d2) {
             currentState = states.Score;
+        }
+    };
+    
+    this.score = function () {
+        if(this.x + this.width < megaman.x && !this.scored) {
+            updatescore();
+            this.scored = true;
         }
     };
 
@@ -343,6 +354,9 @@ function gameLoop() {
  * Updates all moving sprites: foreground, fish, and corals
  */
 function update() {
+    $("#highscore").html(highscore);
+    $("#score").html(score);
+
     frames++;
 
     if (currentState !== states.Score) {
@@ -382,23 +396,22 @@ function render() {
 
 }
 
-function score() {
-    var localScore = localStorage.getItem('score');
-    score = localScore;
-    document.getElementById('score').innerHTML = score;
-    score = 0
+function updatescore() {
+    score++;
+    if(score > highscore) {
+        highscore = score;
+        localStorage.setItem("myHighScore", highscore)
+    }
+    $("#score").html(score);
+    return;
 }
 
-
-function highscore() {
-    var localHighScore = localStorage.getItem('highscore');
-    highscore = localHighScore;
-    document.getElementById('highscore').innerHTML = highscore;
-    highscore = 0
+function highScore() {
+    var high =  localStorage.getItem("myHighScore");
+    highscore = high;
+    $("#highscore").html(highscore);
+    return;
 }
-
-
-
 
 
 
